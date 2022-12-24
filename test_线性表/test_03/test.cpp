@@ -1,11 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
-//设有一个双向循环链表，每个结点中除有prior, data和next三个域外，
-//还增设了一个访问频度域freq。在链表被起用之前，频度域freq的值均初始化为零，
-//而每当对链表进行一次locate(L, x)的操作后，被访问的结点（即元素值等于x的结点）中的频度域freq的值便增1，
-//同时调整链表中结点之间的次序，使其按访问频度非递增的次序顺序排列，
-//以便始终保持被频繁访问的结点总是靠近表头结点。试编写符合上述要求的locate操作的算法。
-
 using namespace std;
 typedef struct List
 {
@@ -53,11 +47,56 @@ void Traverse(LinkNode L)
 	}
 	cout << endl;
 }
+void Locate(LinkNode& L, int x)
+{
+	if (L->next == NULL)
+	{
+		cout << "该链表为空" << endl;
+		return;
+	}
+	LinkNode p = L->next;
+	do
+	{
+		if (p->data == x)
+		{
+			p->freq++;
+			LinkNode q = p, s = p->pre;
+			while (s->freq < q->freq && s != L)
+			{
+				LinkNode temp;
+				s->pre->next = q;
+				s->next = q->next;
+				q->pre = s->pre;
+				q->next->pre = s;
+				s->pre = q;
+				q->next = s;
+
+				temp = s;
+				s = q;
+				q = temp;
+				s = s->pre;
+				q = q->pre;
+			}
+		}
+		p = p->next;
+	} while (p != L);
+}
 int main()
 {
 	LinkNode L;
 	InitNode(L);
 	Creat_List(L);
 	Traverse(L);
+	int x = 0;
+	cout << "请输入你要输入的x的值：";
+	while (scanf("%d", &x) == 1)
+	{
+		
+		Locate(L, x);
+		cout << "调用Locate函数后：";
+		Traverse(L);
+		cout << "请输入你要输入的x的值：";
+	}
+	system("pause");
 	return 0;
 }
