@@ -245,7 +245,37 @@ int numLeaves(LinkTree T)
 	else
 		return numLeaves(T->lchild) + numLeaves(T->rchild);
 }
+int Depth_tree(LinkTree T)
+{
+	if (T == NULL)
+		return 0;
+	int i = Depth_tree(T->lchild);
+	int j = Depth_tree(T->rchild);
+	if (i > j)
+		return i + 1;
+	else
+		return j + 1;
+}
 
+LinkTree creat_tree(char prestr[], char instr[], int prestart, int preend, int instart, int inend)
+{
+	//if (prestart >= preend)return NULL;
+	LinkTree p;
+	p = new TreeNode;
+	if (!p)cout << "ERROR" << endl;
+	char temp = prestr[prestart];
+	p->data = prestr[prestart];
+	p->lchild = NULL;
+	p->rchild = NULL;
+	int root = -1;
+	for (int root = instart; root <= inend && instr[root] != temp; root++);
+	if (root > inend)return NULL;
+	int lenleft = root - instart;
+	if (lenleft)p->lchild = creat_tree(prestr, instr, prestart + 1, prestart + lenleft, instart, instart + lenleft - 1);
+	int lenright = inend - root;
+	if (lenright)p->rchild = creat_tree(prestr, instr, prestart - lenright + 1, preend, inend - lenright + 1, inend);
+	return p;
+}
 int main()
 {
 	LinkTree T;
@@ -284,5 +314,31 @@ int main()
 	cout << "该树的节点个数为：" << numNodes(T) << endl;
 	//计算二叉树的叶子节点
 	cout << "该树的叶子节点个数为：" << numLeaves(T) << endl;
+	//求树的深度
+	cout << "树的深度为：" << Depth_tree(T) << endl;
+
+	//已知一颗二叉树的前序序列和中序序列分别存于两个一维数组中，试编写算法建立该二叉树的二叉链表
+	cout << "请输入该树的节点个数" << endl;
+	int nodenums = 0;
+	cin >> nodenums;
+	//前序序列
+	char prestr[100];
+	//中序序列
+	char instr[100];
+	cout << "请输入前序序列" << endl;
+	for (int i = 1; i <= nodenums; i++)
+	{
+		cin >> prestr[i];
+	}
+	cout << "请输入中序序列" << endl;
+	for (int i = 1; i <= nodenums; i++)
+	{
+		cin >> instr[i];
+	}
+	LinkTree gao = creat_tree(prestr, instr, 1, nodenums, 1, nodenums);
+	//前序遍历二叉树
+	cout << "前序遍历二叉树" << endl;
+	PreOrderTraverse(gao);
+	cout << endl;
 	return 0;
 }
