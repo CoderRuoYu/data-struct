@@ -1,0 +1,4 @@
+﻿  test.cpp
+D:\2023githubcode\data-struct\test_排序\test_排序\test.cpp(7,22): warning C4554: “>>”: 检查运算符优先级是否存在的可能的错误；使用括号阐明优先级
+D:\2023githubcode\data-struct\test_排序\test_排序\test.cpp(28,22): warning C4554: “>>”: 检查运算符优先级是否存在的可能的错误；使用括号阐明优先级
+  test_排序.vcxproj -> D:\2023githubcode\data-struct\test_排序\x64\Debug\test_排序.exe

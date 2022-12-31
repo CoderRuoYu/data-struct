@@ -59,6 +59,7 @@ void creat_graph02(LinkGraph& G)
 		G.arcs[j].firstarc = q;
 	}
 }
+
 int main()
 {
 	LinkGraph G;
