@@ -59,10 +59,52 @@ void creat_graph02(LinkGraph& G)
 		G.arcs[j].firstarc = q;
 	}
 }
-
+int visited[MVNUM];
+void DFS(LinkGraph G, int n)
+{
+	cout << G.arcs[n].ch << ' ';
+	visited[n] = 1;
+	arcs* p = G.arcs[n].firstarc;
+	while (p != NULL)
+	{
+		if (visited[p->locate] != 1)
+			DFS(G, p->locate);
+		p = p->next;
+	}
+}
+int visited2[MVNUM];
+void BFS(LinkGraph G, int n)
+{
+	int quene[1000];//数组模拟队列
+	int front = 0, rear = 0;
+	cout << G.arcs[n].ch << ' ';
+	visited2[n] = 1;
+	quene[rear++] = n;
+	while (front < rear)
+	{
+		int e = quene[front++];
+		arcs* p = G.arcs[e].firstarc;
+		while (p != NULL)
+		{
+			if (visited2[p->locate] != 1)
+			{
+				cout << G.arcs[p->locate].ch << ' ';
+				visited2[p->locate] = 1;
+				quene[rear++] = p->locate;
+			}
+			p = p->next;
+		}
+	}
+}
 int main()
 {
 	LinkGraph G;
 	creat_graph02(G);
+	cout << "深度优先遍历：";
+	DFS(G, 0);
+	cout << endl;
+	cout << "广度优先搜索：";
+	BFS(G, 0);
+	cout << endl;
 	return 0;
 }

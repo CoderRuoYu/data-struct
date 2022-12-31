@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "图的建立", "test_01\tes
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test01", "test_02\test_02.vcxproj", "{6C667E2C-B493-464D-A939-F6EF2D324559}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test03", "test03\test03.vcxproj", "{2BA6B2F9-E001-477B-809D-B769FDB4857D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{6C667E2C-B493-464D-A939-F6EF2D324559}.Release|x64.Build.0 = Release|x64
 		{6C667E2C-B493-464D-A939-F6EF2D324559}.Release|x86.ActiveCfg = Release|Win32
 		{6C667E2C-B493-464D-A939-F6EF2D324559}.Release|x86.Build.0 = Release|Win32
+		{2BA6B2F9-E001-477B-809D-B769FDB4857D}.Debug|x64.ActiveCfg = Debug|x64
+		{2BA6B2F9-E001-477B-809D-B769FDB4857D}.Debug|x64.Build.0 = Debug|x64
+		{2BA6B2F9-E001-477B-809D-B769FDB4857D}.Debug|x86.ActiveCfg = Debug|Win32
+		{2BA6B2F9-E001-477B-809D-B769FDB4857D}.Debug|x86.Build.0 = Debug|Win32
+		{2BA6B2F9-E001-477B-809D-B769FDB4857D}.Release|x64.ActiveCfg = Release|x64
+		{2BA6B2F9-E001-477B-809D-B769FDB4857D}.Release|x64.Build.0 = Release|x64
+		{2BA6B2F9-E001-477B-809D-B769FDB4857D}.Release|x86.ActiveCfg = Release|Win32
+		{2BA6B2F9-E001-477B-809D-B769FDB4857D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

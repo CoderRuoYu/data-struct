@@ -4,6 +4,7 @@ using namespace std;
 #define MVNUM 100
 #define Maxlnt 10000
 #define ERROR -1
+#define MAX_INT 30000
 typedef struct Graph
 {
 	char vexs[MVNUM];
@@ -53,75 +54,38 @@ void creat_graph01(Graph& G)
 		G.arcs[j][i] = weight;
 	}
 }
-//使用邻接表法创建一个无向图
-typedef struct arcs
-{
-	struct arcs* next;
-	int info;
-	int locate;
-}arcs;
-typedef struct vexs
-{
-	char ch;
-	struct arcs* firstarc;
-}vexs;
-typedef struct
-{
-	vexs arcs[MVNUM];
-	int arcnum, vexnum;
-}LinkGraph;
-int Locate2(LinkGraph G, char ch)
-{
-	for (int i = 0; i < G.vexnum; i++)
-	{
-		if (G.arcs[i].ch == ch)
-			return i;
+void prim(Graph G, int v0, int& sum) {
+	int lowcaost[MVNUM];
+	int visited[MVNUM];
+	for (int i = 0; i < G.vexnum; i++) {
+		visited[i] = 0;
+		lowcaost[i] = G.arcs[v0][i];
 	}
-	return ERROR;
+	visited[v0] = 1;
+	int min = MAX_INT, index;
+	for (int i = 0; i < G.vexnum - 1; i++) {
+		for (int j = 0; j < G.vexnum; j++) {
+			if (!visited[j] && lowcaost[j] < min) {
+				min = lowcaost[j];
+				index = j;
+			}
+		}
+		visited[index] = 1;
+		sum += min;
+		for (int j = 0; j < G.vexnum; j++) {
+			if (!visited[j] && G.arcs[index][j] < lowcaost[j]) {
+				lowcaost[j] = G.arcs[index][j];
+			}
+		}
+	}
+	return;
 }
-void creat_graph02(LinkGraph& G)
-{
-	//输入顶点数和边数
-	cout << "请输入顶点总数：";
-	cin >> G.vexnum;
-	cout << "请输入边的总数：";
-	cin >> G.arcnum;
-	cout << "请输入顶点：";
-	for (int i = 0; i < G.vexnum; i++)
-	{
-		cin >> G.arcs[i].ch;
-	}
-	for (int i = 0; i < G.vexnum; i++)
-	{
-		G.arcs[i].firstarc = NULL;
-	}
-	cout << "请依次输入顶点，顶点和权重：" << endl;
-	for (int w = 0; w < G.arcnum; w++)
-	{
-		char num1, num2;
-		int weight;
-		cin >> num1 >> num2 >> weight;
-		int i = Locate2(G, num1);
-		int j = Locate2(G, num2);
 
-		arcs* p = new arcs;
-		p->info = weight;
-		p->locate = j;
-		p->next = G.arcs[i].firstarc;
-		G.arcs[i].firstarc = p;
-
-		arcs* q = new arcs;
-		q->info = weight;
-		q->locate = i;
-		q->next = G.arcs[j].firstarc;
-		G.arcs[j].firstarc = q;
-	}
-}
 int main()
 {
 	Graph G;
 	creat_graph01(G);
-	LinkGraph G1;
-	//creat_graph02(G1);
+	int sum = 0;
+	prim(G, 0, sum);
 	return 0;
 }
