@@ -29,6 +29,25 @@ void insert_tree(LinkTree& T, int e)
 		insert_tree(T->rchild, e);
 	}
 }
+void insert_tree1(LinkTree& T, int e)
+{
+	if (!T)
+	{
+		LinkTree p = new Tree;
+		p->data = e;
+		p->lchild = NULL;
+		p->rchild = NULL;
+		T = p;
+	}
+	else if (e <= T->data)
+	{
+		insert_tree(T->lchild, e);
+	}
+	else
+	{
+		insert_tree(T->rchild, e);
+	}
+}
 void creat_tree(LinkTree& T)
 {
 	int n = 0;
@@ -49,7 +68,7 @@ void mid_traverse(LinkTree& T)
 	mid_traverse(T->rchild);
 }
 //递归进行查找
-LinkTree search_tree(LinkTree& T,int key)
+LinkTree search_tree(LinkTree T,int key)
 {
 	if (!T)return T;
 	if (T->data == key)return T;
@@ -57,7 +76,7 @@ LinkTree search_tree(LinkTree& T,int key)
 	else return search_tree(T->lchild, key);
 }
 //非递归进行查找
-LinkTree search_tree1(LinkTree& T, int key)
+LinkTree search_tree1(LinkTree T, int key)
 {
 	if (!T)return T;
 	LinkTree p = T;
@@ -72,35 +91,7 @@ LinkTree search_tree1(LinkTree& T, int key)
 	}
 	return p;
 }
-//删除操作
-bool delete_node(LinkTree p)
-{
-	if (p == NULL)return 1;
-	if (p->rchild == NULL && p->rchild == NULL)
-		p = NULL;
-	else if (p->lchild == NULL && p->rchild != NULL)
-	{
-		p = p->rchild;
-	}
-	else if (p->rchild == NULL && p->lchild != NULL)
-	{
-		p = p->lchild;
-	}
-	else
-	{
-		LinkTree s = p->lchild;
-		LinkTree tem = p;
-		while (s->rchild != NULL)
-		{
-			tem = s;
-			s = s->rchild;
-		}
-		if (tem == p)
-		{
-			
-		}
-	}
-}
+//void delete_node(LinkTree &T)
 void test(LinkTree& T)
 {
 	//创建二叉排序树
@@ -114,6 +105,7 @@ void test(LinkTree& T)
 	LinkTree ret = search_tree1(T, key);
 	if (!ret)cout << "在二叉排序树中不存在这个数。" << endl;
 	else cout << "找到了这个数，这个数是:" << ret->data << endl;
+	cout << endl;
 }
 
 int main()
