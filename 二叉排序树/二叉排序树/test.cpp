@@ -48,6 +48,7 @@ void mid_traverse(LinkTree& T)
 	cout << T->data << ' ';
 	mid_traverse(T->rchild);
 }
+//递归进行查找
 LinkTree search_tree(LinkTree& T,int key)
 {
 	if (!T)return T;
@@ -55,13 +56,49 @@ LinkTree search_tree(LinkTree& T,int key)
 	else if (key > T->data)return search_tree(T->rchild, key);
 	else return search_tree(T->lchild, key);
 }
+//非递归进行查找
 LinkTree search_tree1(LinkTree& T, int key)
 {
 	if (!T)return T;
 	LinkTree p = T;
 	while (p != NULL && p->data != key)
 	{
-		if(T->data>=key)T=T->
+		if (p->data >= key)
+		{
+			p = p->lchild;
+		}
+		else
+			p = p->rchild;
+	}
+	return p;
+}
+//删除操作
+bool delete_node(LinkTree p)
+{
+	if (p == NULL)return 1;
+	if (p->rchild == NULL && p->rchild == NULL)
+		p = NULL;
+	else if (p->lchild == NULL && p->rchild != NULL)
+	{
+		p = p->rchild;
+	}
+	else if (p->rchild == NULL && p->lchild != NULL)
+	{
+		p = p->lchild;
+	}
+	else
+	{
+		LinkTree s = p->lchild;
+		LinkTree tem = p;
+		while (s->rchild != NULL)
+		{
+			tem = s;
+			s = s->rchild;
+		}
+		if (tem == p)
+		{
+			
+		}
 	}
 }
 void test(LinkTree& T)
@@ -72,12 +109,13 @@ void test(LinkTree& T)
 	mid_traverse(T);
 	cout << endl;
 	int key = 0;
-	cout << "请输入您要查找的数值";
+	cout << "请输入您要查找的数值:";
 	cin >> key;
-	LinkTree ret = search_tree(T, key);
-	if (!ret)cout << "在二叉排序树中不存在这个数" << endl;
+	LinkTree ret = search_tree1(T, key);
+	if (!ret)cout << "在二叉排序树中不存在这个数。" << endl;
 	else cout << "找到了这个数，这个数是:" << ret->data << endl;
 }
+
 int main()
 {
 	LinkTree T;
