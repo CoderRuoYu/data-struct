@@ -1,0 +1,8 @@
+﻿  test.c
+D:\2023githubcode\data-struct\test_2023_1_16\test_2023_1_16\test.c(31,12): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\2023githubcode\data-struct\test_2023_1_16\test_2023_1_16\test.c(31,12): message : 请考虑在格式字符串中使用“%zd”
+D:\2023githubcode\data-struct\test_2023_1_16\test_2023_1_16\test.c(31,12): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 2 拥有了类型“size_t”
+D:\2023githubcode\data-struct\test_2023_1_16\test_2023_1_16\test.c(31,12): message : 请考虑在格式字符串中使用“%zd”
+D:\2023githubcode\data-struct\test_2023_1_16\test_2023_1_16\test.c(31,12): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 3 拥有了类型“size_t”
+D:\2023githubcode\data-struct\test_2023_1_16\test_2023_1_16\test.c(31,12): message : 请考虑在格式字符串中使用“%zd”
+  test_2023_1_16.vcxproj -> D:\2023githubcode\data-struct\test_2023_1_16\x64\Debug\test_2023_1_16.exe
