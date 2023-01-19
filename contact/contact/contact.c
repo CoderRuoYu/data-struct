@@ -17,7 +17,7 @@ void add(people* arr)
 	scanf("%d", &arr->node[arr->size].age);
 	printf("请输入您要添加人的电话号码:>");
 	scanf("%s", arr->node[arr->size].tel);
-	printf("请输入您要联系人的地址:>");
+	printf("请输入您要添加联系人的地址:>");
 	scanf("%s", arr->node[arr->size].address);
 	arr->size++;
 }
@@ -55,13 +55,67 @@ int search(const people* arr)
 	}
 	return -1;
 }
-
-//没有完成需要修改
-int find_by_name();
+int find_by_name(people *arr,char tem[])
+{
+	if (arr->size == 0)return -1;
+	for (int i = 0; i < arr->size; i++)
+	{
+		if (strcmp(arr->node[i].name, tem) == 0)
+			return i;
+	}
+	return -1;
+}
 void del(people* arr)
 {
 	printf("请输入您要删除联系人的姓名:>");
 	char tem[20];
 	scanf("%s", tem);
-
+	int ret = find_by_name(arr, tem);
+	if (ret == -1)printf("您要删除的联系人不存在");
+	else
+	{
+		for (int i = ret; i < arr->size - 1; i++)
+		{
+			strcpy(arr->node[i].name, arr->node[i + 1].name);
+			strcpy(arr->node[i].address, arr->node[i + 1].address);
+			strcpy(arr->node[i].sex, arr->node[i + 1].sex);
+			strcpy(arr->node[i].tel, arr->node[i + 1].tel);
+			arr->node[i].age = arr->node[i + 1].age;
+		}
+		arr->size--;
+	}
+}
+void modify(people* arr)
+{
+	printf("请您输入您要修改哪位联系人的信息:>");
+	char tem[20];
+	scanf("%s", tem);
+	int ret = find_by_name(arr, tem);
+	if (ret == -1)
+	{
+		printf("您输入的联系人不存在于您的通讯录。\n");
+	}
+	else
+	{
+		printf("请输入您要修改的姓名:>");
+		scanf("%s", arr->node[ret].name);
+		printf("请输入您要修改人的性别:>");
+		scanf("%s", arr->node[ret].sex);
+		printf("请输入您要修改人的年龄:>");
+		scanf("%d", &arr->node[ret].age);
+		printf("请输入您要修改人的电话号码:>");
+		scanf("%s", arr->node[ret].tel);
+		printf("请输入您要修改联系人的地址:>");
+		scanf("%s", arr->node[ret].address);
+	}
+}
+//void qsort(void* base, size_t num, size_t size,
+//	int (*compar)(const void*, const void*));
+int my_compar(const void* s1, const void* s2)
+{
+	return ((Node*)s1)->age - ((Node*)s2)->age;
+}
+void sort_contact(people* arr)
+{
+	qsort(arr->node, arr->size, sizeof(arr->node[0]), my_compar);
 }

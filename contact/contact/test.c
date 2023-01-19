@@ -1,11 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "contact.h"
-//实现一个通讯录；
-//通讯录可以用来存储1000个人的信息，
-//每个人的信息包括：姓名、性别、年龄、电话、住址
-//提供方法：
-//删除指定联系人信息
-//修改指定联系人信息
 //以名字排序所有联系人
 
 void menu()
@@ -44,7 +38,7 @@ int main()
 			del(&arr);
 			break;
 		case 4:
-
+			modify(&arr);
 			break;
 		case 5:
 			show(&arr);
@@ -53,7 +47,7 @@ int main()
 			clear(&arr);
 			break;
 		case 7:
-
+			sort_contact(&arr);
 			break;
 		case 0:
 			printf("您已成功退出。");

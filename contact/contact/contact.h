@@ -21,3 +21,5 @@ void show(const people* arr);
 void clear(people* arr);
 int search(const people* arr);
 void del(people* arr);
+void modify(people* arr);
+void sort_contact(people* arr);
