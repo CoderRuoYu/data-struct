@@ -1,3 +1,5 @@
 ﻿  contact.c
 D:\2023githubcode\data-struct\contact\contact\contact.c(120,2): warning C4013: “qsort”未定义；假设外部返回 int
+  test.c
+  正在生成代码...
   contact.vcxproj -> D:\2023githubcode\data-struct\contact\x64\Debug\contact.exe
