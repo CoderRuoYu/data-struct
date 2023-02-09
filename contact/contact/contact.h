@@ -1,5 +1,6 @@
 #pragma once
-//test
+//made by gaoruoyu
+//
 #include <stdio.h>
 #define MAXSIZE 1000
 #include <string.h>
