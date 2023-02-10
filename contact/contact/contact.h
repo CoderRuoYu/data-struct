@@ -1,6 +1,6 @@
 #pragma once
 //made by gaoruoyu
-//
+//2023/2/10
 #include <stdio.h>
 #define MAXSIZE 1000
 #include <string.h>
