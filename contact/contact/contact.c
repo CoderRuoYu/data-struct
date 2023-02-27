@@ -4,7 +4,7 @@ void InitPeople(people* arr)
 {
 	arr->size = 0;
 }
-void add(people* arr)
+void add_people(people* arr)
 {
 	if (arr->size >= MAXSIZE - 1)
 		printf("通讯录已满，无法添加\n");
@@ -21,7 +21,7 @@ void add(people* arr)
 	scanf("%s", arr->node[arr->size].address);
 	arr->size++;
 }
-void show(const people* a)
+void show_people(const people* a)
 {
 	if (a->size == 0)
 	{
@@ -35,13 +35,13 @@ void show(const people* a)
 	}
 	printf("\n");
 }
-void clear(people* arr)
+void clear_people(people* arr)
 {
 	arr->size = 0;
 	printf("您的通讯录已经清空\n");
 }
 //找到匹配的人名返回下标，否则返回-1
-int search(const people* arr)
+int search_people(const people* arr)
 {
 	char tem[20];
 	printf("请输入您要查找的人的名字:>");
@@ -65,7 +65,7 @@ int find_by_name(people *arr,char tem[])
 	}
 	return -1;
 }
-void del(people* arr)
+void del_people(people* arr)
 {
 	printf("请输入您要删除联系人的姓名:>");
 	char tem[20];
@@ -85,7 +85,7 @@ void del(people* arr)
 		arr->size--;
 	}
 }
-void modify(people* arr)
+void modify_people(people* arr)
 {
 	printf("请您输入您要修改哪位联系人的信息:>");
 	char tem[20];

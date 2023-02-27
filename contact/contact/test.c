@@ -11,6 +11,19 @@ void menu()
 	printf("*****7.sort******0.exit*****\n");
 	printf("****************************\n");
 }
+enum number
+{
+	exit,
+	add,
+	search,
+	del,
+	modify,
+	show,
+	clear,
+	sort
+};
+
+
 int main()
 {
 	int n = 0;
@@ -24,38 +37,37 @@ int main()
 		scanf("%d", &n);
 		switch (n)
 		{
-		case 1:
-			add(&arr);
+		case add:
+			add_people(&arr);
 			break;
-		case 2:
-			ret = search(&arr);
+		case search:
+			ret = search_people(&arr);
 			if (ret != -1)
 				printf("您要查找的人名的下标为%d\n", ret);
 			else
 				printf("您的通讯录中没找到这个人\n");
 			break;
-		case 3:
-			del(&arr);
+		case del:
+			del_people(&arr);
 			break;
-		case 4:
-			modify(&arr);
+		case modify:
+			modify_people(&arr);
 			break;
-		case 5:
-			show(&arr);
+		case show:
+			show_people(&arr);
 			break;
-		case 6:
-			clear(&arr);
+		case clear:
+			clear_people(&arr);
 			break;
-		case 7:
+		case sort:
 			sort_contact(&arr);
 			break;
-		case 0:
+		case exit:
 			printf("您已成功退出。");
 			break;
 		default:
 			printf("\n");
 			printf("输入错误，请重新输入。\n");
-			
 			break;
 		}
 	} while (n);
