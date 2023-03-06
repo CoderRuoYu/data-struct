@@ -4,13 +4,20 @@
 #include <stdio.h>
 #define MAXSIZE 1000
 #include <string.h>
+#define NAMEMAXSIZE 15
+#define SEXMAXSIZE 4
+#define TELMAXSIZE 14
+#define ADDRESSMAX 10
+
+#define DEFAULT_SZ 3
+#define INC_SZ 2
 typedef struct Node
 {
-	char name[15];
-	char sex[4];
+	char name[NAMEMAXSIZE];
+	char sex[SEXMAXSIZE];
 	int age;
-	char tel[14];
-	char address[10];
+	char tel[TELMAXSIZE];
+	char address[ADDRESSMAX];
 }Node;
 //¾²Ì¬°æ±¾
 //typedef struct people

@@ -63,6 +63,7 @@ int main()
 			sort_contact(&arr);
 			break;
 		case exit:
+			destroy_contact(&arr);
 			printf("您已成功退出。");
 			break;
 		default:

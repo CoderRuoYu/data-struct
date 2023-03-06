@@ -2,19 +2,39 @@
 #include "contact.h"
 void InitPeople(people* arr)
 {
+	arr->node = (Node*)malloc(sizeof(Node) * DEFAULT_SZ);
+	if (!(arr->node))
+	{
+		perror("malloc");
+		return;
+	}
+	arr->maxsize = DEFAULT_SZ;
 	arr->size = 0;
+}
+void check_capacity(people* arr)
+{
+	if (arr->maxsize == arr->size)
+	{
+		Node* ptr = (Node *)realloc(arr->node, sizeof(Node) * (INC_SZ + arr->size));
+		if (!ptr)
+		{
+			perror("realloc");
+			return;
+		}
+		arr->node = ptr;
+		arr->maxsize += INC_SZ;
+	}
 }
 void add_people(people* arr)
 {
-	if (arr->size >= MAXSIZE - 1)
-		printf("通讯录已满，无法添加\n");
+
+	check_capacity(arr);
 	printf("请输入您要添加的姓名:>");
 	scanf("%s", arr->node[arr->size].name);
 	printf("请输入您要添加人的性别:>");
 	scanf("%s", arr->node[arr->size].sex);
-
 	printf("请输入您要添加人的年龄:>");
-	scanf("%d", &arr->node[arr->size].age);
+	scanf("%d", &(arr->node[arr->size].age));
 	printf("请输入您要添加人的电话号码:>");
 	scanf("%s", arr->node[arr->size].tel);
 	printf("请输入您要添加联系人的地址:>");
@@ -118,4 +138,12 @@ int my_compar(const void* s1, const void* s2)
 void sort_contact(people* arr)
 {
 	qsort(arr->node, arr->size, sizeof(arr->node[0]), my_compar);
+}
+void destroy_contact(people* arr)
+{
+	free(arr->node);
+	arr->node = NULL;
+	arr->size = 0;
+	arr->maxsize = 0;
+	arr = NULL;
 }
