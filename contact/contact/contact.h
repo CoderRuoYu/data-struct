@@ -2,7 +2,7 @@
 //made by gaoruoyu
 //2023/2/10
 #include <stdio.h>
-#define MAXSIZE 1000
+//#define MAXSIZE 1000
 #include <string.h>
 #define NAMEMAXSIZE 15
 #define SEXMAXSIZE 4
@@ -11,11 +11,12 @@
 
 #define DEFAULT_SZ 3
 #define INC_SZ 2
+
 typedef struct Node
 {
+	int age;
 	char name[NAMEMAXSIZE];
 	char sex[SEXMAXSIZE];
-	int age;
 	char tel[TELMAXSIZE];
 	char address[ADDRESSMAX];
 }Node;

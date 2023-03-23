@@ -2,7 +2,8 @@
 #include "contact.h"
 void InitPeople(people* arr)
 {
-	arr->node = (Node*)malloc(sizeof(Node) * DEFAULT_SZ);
+
+	arr->node = (Node*)malloc(sizeof(struct Node) * DEFAULT_SZ);
 	if (!(arr->node))
 	{
 		perror("malloc");
@@ -23,11 +24,11 @@ void check_capacity(people* arr)
 		}
 		arr->node = ptr;
 		arr->maxsize += INC_SZ;
+		printf("增容成功");
 	}
 }
 void add_people(people* arr)
 {
-
 	check_capacity(arr);
 	printf("请输入您要添加的姓名:>");
 	scanf("%s", arr->node[arr->size].name);

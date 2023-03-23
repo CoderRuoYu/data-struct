@@ -1,8 +1,8 @@
 ﻿  contact.c
-D:\2023githubcode\data-struct\contact\contact\contact.c(5,21): warning C4013: “malloc”未定义；假设外部返回 int
-D:\2023githubcode\data-struct\contact\contact\contact.c(5,54): warning C4312: “类型强制转换”: 从“int”转换到更大的“Node *”
-D:\2023githubcode\data-struct\contact\contact\contact.c(18,23): warning C4013: “realloc”未定义；假设外部返回 int
-D:\2023githubcode\data-struct\contact\contact\contact.c(18,78): warning C4312: “类型强制转换”: 从“int”转换到更大的“Node *”
-D:\2023githubcode\data-struct\contact\contact\contact.c(140,2): warning C4013: “qsort”未定义；假设外部返回 int
-D:\2023githubcode\data-struct\contact\contact\contact.c(144,2): warning C4013: “free”未定义；假设外部返回 int
+D:\2023githubcode\data-struct\contact\contact\contact.c(6,21): warning C4013: “malloc”未定义；假设外部返回 int
+D:\2023githubcode\data-struct\contact\contact\contact.c(6,61): warning C4312: “类型强制转换”: 从“int”转换到更大的“Node *”
+D:\2023githubcode\data-struct\contact\contact\contact.c(19,23): warning C4013: “realloc”未定义；假设外部返回 int
+D:\2023githubcode\data-struct\contact\contact\contact.c(19,78): warning C4312: “类型强制转换”: 从“int”转换到更大的“Node *”
+D:\2023githubcode\data-struct\contact\contact\contact.c(141,2): warning C4013: “qsort”未定义；假设外部返回 int
+D:\2023githubcode\data-struct\contact\contact\contact.c(145,2): warning C4013: “free”未定义；假设外部返回 int
   contact.vcxproj -> D:\2023githubcode\data-struct\contact\x64\Debug\contact.exe
